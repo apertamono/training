@@ -10,16 +10,16 @@ using namespace std;
 // Compiler errors for special characters copied from PDF
 // Retyped everything
 
-// Use Ctrl-C to exit
+// Version 2: add graceful exit instead of Ctrl+C
 
 bool is_palindrome(const string& s)
 {
-	int first = 0;			// index of first letter
+	int first = 0;				// index of first letter
 	int last = s.length()-1; 	// index of last letter
 	while (first < last) {		// we haven't reached the middle
 		if (s[first]!=s[last]) return false;
-		++first;		// move forward
-		--last;			// move backward
+		++first;				// move forward
+		--last;					// move backward
 	}
 	return true;
 }
@@ -27,6 +27,7 @@ bool is_palindrome(const string& s)
 int main()
 {
 	for (string s; cin>>s; ) {
+		if (s=="exit") break; 	// wouldn't this be too simple? no, it works
 		cout << s << " is";
 		if (!is_palindrome(s)) cout << " not";
 		cout << " a palindrome\n";
