@@ -6,7 +6,7 @@ import random
 # Shuffle the list randomly before you print it to a text file
 # Paths are defined for Windows
 # Tested in Python 3.5.2 and 3.6.4
-# Could the condition in line 17 be more compact?
+# Could the condition in line 18 be more compact?
 
 path = 'C:\\Data\\Images\\Memes\\'
 
