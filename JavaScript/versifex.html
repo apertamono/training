@@ -1,0 +1,279 @@
+<HTML>
+
+<HEAD>
+<TITLE>Versifex Rijmelaar</TITLE>
+<SCRIPT language="JavaScript">
+<!-- // eerste vfx-script, met rijm maar zonder metrum
+rimes = new Array (10);
+letters = new Array ("A","B","C","D","E","F","G","H","I","J");
+var line = "";
+ROS = new Array (16);
+var L = 0;
+var R = 0;
+OS = new Array (16);
+EC = new Array (12);
+SV = new Array (12);
+LV = new Array (12);
+var PF = "ge";
+var SF = "er";
+var SW = "test";
+var UW = "de";
+var x = 0;
+var y = 0;
+var n = 0;
+var i = 0;
+var j = 0;
+
+function Onset() {
+  for (n=0; n<16; n++) {
+    x = Math.ceil(Math.random()*24);
+    switch (x) {
+      case (1) : OS[n] = "b";     break;
+      case (2) : OS[n] = "b";     break;
+      case (3) : OS[n] = "f";     break;
+      case (4) : OS[n] = "g";     break;
+      case (5) : OS[n] = "h";     break;
+      case (6) : OS[n] = "j";     break;
+      case (7) : OS[n] = "k";     break;
+      case (8) : OS[n] = "l";     break;
+      case (9) : OS[n] = "m";     break;
+      case (10) : OS[n] = "n";    break;
+      case (11) : OS[n] = "p";    break;
+      case (12) : OS[n] = "r";    break;
+      case (13) : OS[n] = "s";    break;
+      case (14) : OS[n] = "t";    break;
+      case (15) : OS[n] = "v";    break;
+      case (16) : OS[n] = "w";    break;
+      case (17) : OS[n] = "z";    break;
+      case (18) : OS[n] = "v";    break;
+      case (19) : OS[n] = "m";    break;
+      case (20) : OS[n] = "n";     break;
+      default : OS[n] = "d";
+    }
+    y = Math.ceil(Math.random()*8);
+    if (y<=2 && x>=7 && x<=11) OS[n] = "s"+OS[n];
+    if (y<=2 && OS[n]=="t") OS[n] = "st";
+    if (y<=2 && OS[n]=="g") OS[n] = "sch";
+    if (y==3 && (OS[n]=="b" || OS[n]=="f" || OS[n]=="g" || OS[n]=="k" || OS[n]=="p" || OS[n]=="s" || OS[n]=="v")) OS[n] += "l";
+    if (y==4 && (OS[n]=="b" || OS[n]=="f" || OS[n]=="g" || OS[n]=="k" || OS[n]=="p" || OS[n]=="t" || OS[n]=="v" || OS[n]=="w" || OS[n]=="d")) OS[n] += "r";
+  }
+}
+function RimeOnset() {
+  for (i=0; i<16; i++) {
+    for (j=0; j<16; j++) {
+      if (OS[i]==OS[j] && i!=j) {Onset();}
+    }
+  }
+}
+
+function EndCons() {
+  for (n=0; n<12; n++) {
+    x = Math.ceil(Math.random()*12);
+    y = Math.ceil(Math.random()*6);
+    switch (x) {
+      case (1) : if (y<4) EC[n] = "ch"; else EC[n] = "f";    break;
+      case (2) : EC[n] = "k";    break;
+      case (3) : EC[n] = "l";    break;
+      case (4) : EC[n] = "m";    break;
+      case (5) : EC[n] = "p";    break;
+      case (6) : EC[n] = "r";    break;
+      case (7) : EC[n] = "s";    break;
+      case (8) : EC[n] = "t";    break;
+      case (9) : EC[n] = "t";    break;
+      default : EC[n] = "n";
+    }
+    if (y==1 && x>1 && EC[n] !="s") EC[n] += "s";
+    // geen R na tweeklank - dus EC na LV moet zelfde nummer hebben
+    if (EC[n]=="r" && (LV[n]=="ei" || LV[n]=="ui" || LV[n]=="au")) EC[n] = "t";
+  }
+}
+
+function ShortVowel() {
+  for (n=0; n<12; n++) {
+    x = Math.ceil(Math.random()*16);
+    switch (x) {
+      case (1) : SV[n] = "a";     break;
+      case (2) : SV[n] = "a";     break;
+      case (3) : SV[n] = "a";     break;
+      case (4) : SV[n] = "i";     break;
+      case (5) : SV[n] = "i";     break;
+      case (6) : SV[n] = "i";     break;
+      case (7) : SV[n] = "o";     break;
+      case (8) : SV[n] = "o";     break;
+      case (9) : SV[n] = "u";     break;
+      //case (10) : SV[n] = "oe";    break;
+      //case (11) : SV[n] = "eu";   break;
+      default : SV[n] = "e";
+    }
+  }
+}
+
+function LongVowel() {
+  for (n=0; n<12; n++) {
+    x = Math.ceil(Math.random()*20);
+    switch (x) {
+      case (1) : LV[n] = "aa";     break;
+      case (2) : LV[n] = "aa";     break;
+      case (3) : LV[n] = "aa";     break;
+      case (4) : LV[n] = "aa";     break;
+      case (5) : LV[n] = "ie";     break;
+      case (6) : LV[n] = "ie";     break;
+      case (7) : LV[n] = "oo";     break;
+      case (8) : LV[n] = "oo";     break;
+      case (9) : LV[n] = "oo";     break;
+      case (10) : LV[n] = "uu";     break;
+      case (11) : LV[n] = "oe";     break;
+      case (12) : LV[n] = "eu";    break;
+      case (13) : LV[n] = "ei";    break;
+      case (14) : LV[n] = "ui";    break;
+      case (15) : LV[n] = "au";    break;
+      default : LV[n] = "ee";
+    }
+  }
+}
+
+// vier soorten Nederlandse woorden/woorddelen van 1 lettergreep
+function Prefix() {
+  //meestal onbeklemtoonde voorvoegsels
+  x = Math.ceil(Math.random()*20);
+  switch (x) {
+    case (1) : PF = "be";     break;
+    case (2) : PF = "be";     break;
+    case (3) : PF = "ver";    break;
+    case (4) : PF = "ver";    break;
+    case (5) : PF = "ver";    break;
+    case (6) : PF = "her";    break;
+    case (7) : PF = "om";     break;
+    case (8) : PF = "on";     break;
+    case (9) : PF = "ont";    break;
+    case (10) : PF = "re";    break;
+    case (11) : PF = "af";    break;
+    case (12) : PF = "in";    break;
+    case (13) : PF = "op";    break;
+    default : PF = "ge";
+  }
+}
+function Suffix() {
+  //alleen onbeklemtoonde achtervoegsels beginnend met klinker
+  temp = new Array ('e','el','en','en','en','end','er','ig','ig','ik','in','ing')
+  x = Math.floor(Math.random()*12);
+  SF = temp[x]
+}
+function StressedWord() {
+  //geen inhoudswoorden
+  temp = new Array ('en','of','als','ook','aan','voor','van','in','uit','dat','wat','die','een','twee','drie','hij','ik','zij','u','o','a','ooit','ja','nee','niet','wel','erg','eens','door','al')
+  x = Math.floor(Math.random()*30);
+  SW = temp[x]
+}
+function UnstrWord() {
+  //onbeklemtoonde woorden bestaan niet, maar deze zijn het meestal of vaak
+  x = Math.ceil(Math.random()*23);
+  switch (x) {
+    case (1) : UW = "het";   break;
+    case (2) : UW = "een";   break;
+    case (3) : UW = "een";   break;
+    case (4) : UW = "te";    break;
+    case (5) : UW = "er";    break;
+    case (6) : UW = "er";    break;
+    case (7) : UW = "van";   break;
+    case (8) : UW = "met";   break;
+    case (9) : UW = "ik";    break;
+    case (10) : UW = "je";   break;
+    case (11) : UW = "mijn"; break;
+    case (12) : UW = "zijn"; break;
+    case (13) : UW = "ze";   break;
+    case (14) : UW = "hun";  break;
+    case (15) : UW = "wel";  break;
+    case (16) : UW = "dan";  break;
+    case (17) : UW = "en";   break;
+    case (18) : UW = "al";   break;
+    default : UW = "de";
+  }
+}
+
+//function Refresh() {
+//}
+
+function MakeLine() {
+  Onset();
+  ShortVowel();
+  LongVowel();
+  EndCons();
+  Prefix();
+  Suffix();
+  StressedWord();
+  UnstrWord();
+  // 2020: maak het begin van de regels ook variabel
+  z = Math.ceil(Math.random()*7);  
+  switch (z) {
+    case (1): line = UW+" "+SV[0]+EC[0]+" "+SW+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+PF+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6]; break;
+	
+    case (2): line = PF+SV[0]+EC[0]+" "+SW+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6]; break;	
+	
+    case (3): line = LV[6]+EC[0]+SW+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+" "+PF+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6]; break;
+	
+    case (4): line = SV[0]+OS[5]+LV[6]+EC[0]+" "+SW+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+PF+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6]; break;
+	
+	case (5): line = SW+UW+" "+SV[0]+EC[0]+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+PF+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6]; break;
+	
+    default: line = OS[5]+SV[0]+EC[0]+" "+SW+" "+OS[0]+SV[1]+EC[1]+" "+OS[1]+LV[2]+EC[2]+SV[2]+EC[3]+" "+OS[2]+SV[3]+EC[4]+PF+OS[3]+LV[5]+EC[5]+" "+OS[4]+SV[4]+EC[6];
+  }
+}
+
+// probleem: vier, later tien *altijd verschillende* rijmen aanmaken
+// keuze 'vrouwelijk/liggend' en 'mannelijk/staand' toevoegen, of afwisselen:
+// rimes[R] = (R % 2 == 1) ? LV[0]+EC[0] : SV[0]+OS[0]+SV[1]+EC[0];
+function MakeRimes () {
+  Onset();
+  do {LongVowel();} while (LV[0]==LV[1]);
+  ShortVowel();
+  for (i=0; i<4; i++) {
+    for (j=0; j<4; j++) {
+      if (SV[i]==SV[j] && i!=j) ShortVowel();
+    }
+  } // dit is onzin, je moet dubbelen meteen noteren in een teller-array
+  EndCons();
+  rimes[0] = LV[0]+EC[0]+OS[0]+SV[0];
+  rimes[1] = SV[1]+EC[3];
+  rimes[2] = SV[2]+OS[1]+SV[3]+EC[2];
+  rimes[3] = LV[1]+EC[1];
+}
+
+function LineRime(R) {
+  MakeLine();
+  // tijdelijk:
+  ROS[L] = OS[L]
+  // rightframe.document.writeln ("<SMALL>"+letters[R]+"</SMALL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+  rightframe.document.writeln (line+ROS[L]+rimes[R]+"<BR>");
+  // verschillende Onset voor minstens zestien regels forceren
+  L++; if (L>15) {L=0; RimeOnset();}
+}
+
+function EmptyLine() {
+  rightframe.document.writeln ("<BR>");
+}
+
+function Init() {
+  leftframe.document.open();
+  leftframe.document.writeln ("<HTML>");
+  leftframe.document.writeln ("<FORM>");
+  leftframe.document.writeln ("<INPUT type=\"button\" value=\"A-rijm\" onClick=\"parent.LineRime(0);\"><P>");
+  leftframe.document.writeln ("<INPUT type=\"button\" value=\"B-rijm\" onClick=\"parent.LineRime(1);\"><P>");
+  leftframe.document.writeln ("<INPUT type=\"button\" value=\"C-rijm\" onClick=\"parent.LineRime(2);\"><P>");
+  leftframe.document.writeln ("<INPUT type=\"button\" value=\"D-rijm\" onClick=\"parent.LineRime(3);\"><P>");
+  leftframe.document.writeln ("<INPUT type=\"button\" value=\"Lege regel\" onClick=\"parent.EmptyLine();\"><P>");
+  leftframe.document.writeln ("</FORM>");
+  leftframe.document.writeln ("</HTML>");
+  leftframe.document.close();
+  rightframe.document.open();
+}
+
+// end hide -->
+</SCRIPT>
+</HEAD>
+
+<FRAMESET onLoad="Init(); MakeRimes();" COLS="20%,80%">
+  <FRAME NAME="leftframe">
+  <FRAME NAME="rightframe">
+</FRAMESET>
+</HTML>

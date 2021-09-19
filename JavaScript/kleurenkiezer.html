@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Kleurenkiezer - - Edwin den Boer - - </TITLE>
+
+<!-- Google Analytics toegevoegd op 27 juni 2011, verwijderd op 19 september 2021 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// Script (c) Edwin den Boer, 2002
+var agRn = 255
+var agGn = 255
+var agBn = 255
+var agRs = "FF"
+var agGs = "FF"
+var agBs = "FF"
+var tekstkleur = "000000"
+
+function Headline() {
+  headframe.document.open();
+  headframe.document.writeln("<HTML><BODY TEXT='#000000' BGCOLOR='#FFFFFF'><H2 ALIGN='center'>");
+  headframe.document.writeln("Kleurenkiezer: achtergrondkleur");
+  headframe.document.writeln("</H2></HTML>");
+}
+
+function Conversie() {
+  // conversie nog automatiseren
+  if (agRn == 0)   {agRs = "00";}
+  if (agRn == 51)  {agRs = "33";}
+  if (agRn == 102) {agRs = "66";}
+  if (agRn == 153) {agRs = "99";}
+  if (agRn == 204) {agRs = "CC";}
+  if (agRn == 255) {agRs = "FF";}
+  if (agGn == 0)   {agGs = "00";}
+  if (agGn == 51)  {agGs = "33";}
+  if (agGn == 102) {agGs = "66";}
+  if (agGn == 153) {agGs = "99";}
+  if (agGn == 204) {agGs = "CC";}
+  if (agGn == 255) {agGs = "FF";}
+  if (agBn == 0)   {agBs = "00";}
+  if (agBn == 51)  {agBs = "33";}
+  if (agBn == 102) {agBs = "66";}
+  if (agBn == 153) {agBs = "99";}
+  if (agBn == 204) {agBs = "CC";}
+  if (agBn == 255) {agBs = "FF";}
+}
+
+function Buttons() {
+  buttframe.document.open();
+  buttframe.document.writeln("<HTML><BODY BGCOLOR='#FFFFFF'><FORM><TABLE WIDTH='100%'><TR>");
+  for (k=5; k>=0; k--)  {
+    agBn = k * 51
+    for (j=5; j>=0; j--) {
+      if (j==5 || j==3 || j==1) {buttframe.document.writeln("<TR>")}
+      agRn = j * 51
+      for (i=5; i>=0; i--) {
+        agGn = i * 51
+        Conversie();
+        buttframe.document.writeln("<TD WIDTH='5%'><INPUT TYPE='button' VALUE='      ' STYLE='font-family: Verdana; font-size: 12pt; font-weight: bold; color: #" +tekstkleur+ "; background: #" + agRs + agGs + agBs + "' onClick='javascript:alert(\"U heeft gekozen voor de kleur: #" + agRs + agGs + agBs + "\")'></TD>");
+      }
+      if (j==4 || j==2 || j==0) {buttframe.document.writeln("</TR>")}
+    }
+  }
+  buttframe.document.writeln("</TABLE></FORM></BODY></HTML>");
+  buttframe.document.close();
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+
+<FRAMESET ROWS="15%,85%" onLoad="Headline(); Buttons();">
+  <FRAME NAME="headframe" NORESIZE BORDER=0 FRAMEBORDER=0>
+  <FRAME NAME="buttframe" NORESIZE BORDER=0 FRAMEBORDER=0>
+</FRAMESET>
+<NOFRAMES>
+Wordt het niet eens tijd voor een nieuwe browser?<BR>
+Voor deze pagina is er een nodig die frames en JavaScript aankan.
+</NOFRAMES>
+</HTML>

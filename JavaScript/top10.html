@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Top 10 - De ergste kerstcadeaus aller tijden - Edwin den Boer </TITLE>
+
+<!-- Google Analytics toegevoegd op 27 juni 2011, verwijderd op 19 september 2021 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// Script (c) Edwin den Boer, 2002
+// Het is toegestaan om dit script te gebruiken voor andere teksten, als u mijn naam maar vermeld in de broncode.
+var counting = false;
+var n=0;
+to = new Array(9);
+quote = new Array(10);
+quote[0] = "Ingelijste foto\'s van een lelijke oom, poserend als bodybuilder in een zwembroekje.";
+quote[1] = "Een stoffige deo-roller.";
+quote[2] = "Een pakje maandverband, nota bene een gratis monster.";
+quote[3] = "Een paraplu die bij de eerste gelegenheid inklapte in het gezicht van de gelukkige ontvanger, zodat zijn bril op straat kapot viel.";
+quote[4] = "Een fles mondwater.";
+quote[5] = "Een afslankmiddel.";
+quote[6] = "Een WC-bril.";
+quote[7] = "Tegoedbonnen voor kinderkleding, helaas verlopen.";
+quote[8] = "Veertien paar identieke golfsokken.";
+quote[9] = "Een aardappelschilmesje.";
+
+function Headline() {
+  headframe.document.open();
+  headframe.document.write("<HTML><BODY TEXT='#FFFF00' BGCOLOR='#006600'><H2 ALIGN='center' STYLE='font-family:Arial'>");
+  headframe.document.write("Top 10: De ergste kerstcadeaus aller tijden");
+  headframe.document.write("</H2></BODY></HTML>");
+  headframe.document.close();
+}
+
+function Buttons() {
+  buttframe.document.open();
+  buttframe.document.write("<HTML><BODY BGCOLOR='#006600'><FORM><TABLE WIDTH='100%'><TR>");
+  for (i=1; i<=10; i++) {
+    buttframe.document.write("<TD WIDTH='7%'><INPUT TYPE='button' VALUE=' "+i+" ' STYLE='font-family: Verdana; font-size: 12pt; font-weight: bold; color: #006600; background: #FFFF00' onClick='parent.Stop(); parent.ShowNum("+i+");'></TD>");
+  }
+  buttframe.document.write("<TD WIDTH='5%'> </TD><TD WIDTH='15%'><INPUT TYPE='button' VALUE='Aftellen' STYLE='font-family: Verdana; font-size: 12pt; font-weight: bold; color: #006600; background: #FFFF00' onClick='parent.Countdown();'>");
+  buttframe.document.write("<TD WIDTH='10%'> <INPUT TYPE='button' VALUE='Stop' STYLE='font-family: Verdana; font-size: 12pt; font-weight: bold; color: #006600; background: #FFFF00' onClick='parent.Stop();'></TD>")
+  buttframe.document.write("</TR></TABLE></FORM></BODY></HTML>");
+  buttframe.document.close();
+}
+
+function Intro() {
+  textframe.document.open();
+  textframe.document.write("<HTML><BODY BGCOLOR='#FFFF00'>");
+  textframe.document.write("<TABLE CELLPADDING='20' WIDTH='100%'><TR><TD ALIGN='center' VALIGN='middle' WIDTH=50% STYLE='font-family:Arial'><FONT SIZE='3' COLOR='#006600'>Honger lijden is erg, maar kerstcadeaus ontvangen kan ook een beproeving zijn. Zeker als je in een land als Amerika woont, waar iedereen geacht wordt iets aan Kerst te doen, ook mensen die van nature geen gulle gevers zijn. Dit is een bloemlezing van de allerergste kerstcadeaus, zoals beschreven op allerlei webpagina\'s en nieuwsgroepen</FONT></TD>");
+  textframe.document.write("<TD ALIGN='center' VALIGN='middle' WIDTH=50%><FONT SIZE='3' COLOR='#006600' STYLE='font-family:Arial'><I>Gebruiksaanwijzing: klik op de knop \[Aftellen\] om automatisch af te tellen van nummer 10 tot nummer 1, op \[Stop\] om het aftellen af te breken, of kies er zelf een uit met de knoppen 1-10.</I></FONT> </TD>");
+  textframe.document.write("</TR></TABLE></BODY></HTML>");
+  textframe.document.close();
+}
+
+function ShowNum(n) {
+  textframe.document.open();
+  textframe.document.write("<HTML><BODY BGCOLOR='#FFFF00'><BR>");
+  textframe.document.write("<TABLE CELLPADDING='10' WIDTH='100%'><TR><TD WIDTH='5%'> </TD><TD BGCOLOR='#E83300' WIDTH='15%' ALIGN='center' VALIGN='middle'>&nbsp;<BR><FONT SIZE='7' COLOR='#FFFF00'><B>"+n+"</B></FONT><BR>&nbsp;</TD><TD WIDTH='5%'> </TD>");
+  textframe.document.write("<TD WIDTH='75%' ALIGN='center' VALIGN='middle'><FONT SIZE='5' COLOR='#E83300'><I>"+quote[n-1]);
+  textframe.document.write("</I></FONT> </TD></TR></TABLE></BODY></HTML>");
+  textframe.document.close();
+  if (n==1) {counting=false};
+}
+
+function Countdown() {
+  if (counting) {Stop();}
+  ShowNum(10);
+  var d = 0;
+  for (i=9; i>=1; i--) {
+    d += 3000 + (quote[i].length * 20);
+    to[i] = setTimeout("ShowNum("+i+")",d);
+    }
+  counting = true;
+}
+
+function Stop() {
+  for (i=9; i>=1; i--) {
+    clearTimeout(to[i]);
+    counting = false;
+  }
+}
+// -->
+</SCRIPT>
+</HEAD>
+
+<FRAMESET ROWS="20%,60%,20%" onLoad="Headline(); Buttons(); Intro();">
+  <FRAME NAME="headframe" NORESIZE BORDER=0 FRAMEBORDER=0>
+  <FRAME NAME="textframe" NORESIZE BORDER=0 FRAMEBORDER=0>
+  <FRAME NAME="buttframe" NORESIZE BORDER=0 FRAMEBORDER=0>
+</FRAMESET>
+<NOFRAMES>
+<P>Sorry, voor deze pagina is een browser nodig die frames en JavaScript aankan. De bedoeling is een aftelscript te demonstreren. Maar ik wil u de top-10 van de allerergste kerstcadeaus niet onthouden:
+
+<P>10. Een aardappelschilmesje.
+<P> 9. Veertien paar identieke golfsokken
+<P> 8. Tegoedbonnen voor kinderkleding, helaas verlopen.
+<P> 7. Een WC-bril
+<P> 6. Een afslankmiddel.
+<P> 5. Een fles mondwater.
+<P> 4. Een paraplu die bij de eerste gelegenheid inklapte en de bril van de gelukkige ontvanger afsloeg, zodat die op straat kapot viel.
+<P> 3. Een pakje maandverband, nota bene een gratis monster.
+<P> 2. Een stoffige deo-roller.
+<P> 1. Foto's van een lelijke oom, poserend als bodybuilder in een zwembroekje.
+<P>
+</NOFRAMES>
+
+<NOSCRIPT>
+<P>Sorry, voor deze pagina is een browser nodig die frames en JavaScript aankan. De bedoeling is een aftelscript te demonstreren. Maar ik wil u de top-10 van de allerergste kerstcadeaus niet onthouden:
+
+<P>10. Een aardappelschilmesje.
+<P> 9. Veertien paar identieke golfsokken
+<P> 8. Tegoedbonnen voor kinderkleding, helaas verlopen.
+<P> 7. Een WC-bril
+<P> 6. Een afslankmiddel.
+<P> 5. Een fles mondwater.
+<P> 4. Een paraplu die bij de eerste gelegenheid inklapte en de bril van de gelukkige ontvanger afsloeg, zodat die op straat kapot viel.
+<P> 3. Een pakje maandverband, nota bene een gratis monster.
+<P> 2. Een stoffige deo-roller.
+<P> 1. Ingelijste foto's van een lelijke oom, poserend als bodybuilder in een zwembroekje.
+
+</NOSCRIPT>
+</HTML>

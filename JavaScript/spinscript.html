@@ -1,0 +1,715 @@
+<HTML>
+<HEAD>
+<!-- <TITLE>Spinscript, versie 1.0 beta - - - Edwin den Boer, april 2000 - -</TITLE> -->
+<TITLE>Spinscript, versie 1.1 beta - - - Edwin den Boer, juli 2001 - -</TITLE>
+
+<!-- Google Analytics toegevoegd op 27 juni 2011, verwijderd op 19 september 2021 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- // verbergen voor browsers zonder script
+
+function Begin() {
+  // nieuw naamloos html-bestand
+  // bestandsnaam opgeven lukt niet in IE4, 'windowname' wel
+  // (dan wordt steeds naar het zelfde venster geschreven)
+  // in Opera lukt het opslaan soms wel, soms niet
+  Output= window.open("", "", "status=yes,toolbar=yes,menubar=yes,scrollbars=yes");
+  Output.document.open();
+  var titel= document.first.titelveld.value;
+  Output.document.write("<HTML>\n<HEAD>\n<TITLE>\n"+titel);
+  Output.document.write("\n</TITLE>\n</HEAD>\n");
+}
+
+function Kleuren() {
+  // lezen
+  var achtergr= document.second.bgcolor.value;
+  var agR= document.second.bgRed.value;
+  var agG= document.second.bgGreen.value;
+  var agB= document.second.bgBlue.value;
+  if (agR !="" && agG !="" && agB !="") achtergr= "#"+agR+agG+agB ;
+  var tekstkleur= document.second.textcolor.value;
+  var txR= document.second.txRed.value;
+  var txG= document.second.txGreen.value;
+  var txB= document.second.txBlue.value;
+  if (txR !="" && txG !="" && txB !="") tekstkleur= "#"+txR+txG+txB ;
+  var koppelkleur= document.second.linkcolor.value;
+  var liR= document.second.liRed.value;
+  var liG= document.second.liGreen.value;
+  var liB= document.second.liBlue.value;
+  if (liR !="" && liG !="" && liB !="") koppelkleur=  "#"+liR+liG+liB ;
+  var agpl = document.second.back.value;
+  // schrijven
+  Output.document.write("\n<BODY");
+  if (achtergr != "")    Output.document.write(" bgcolor='"+achtergr+"'");
+  if (agpl != "")        Output.document.write(" background='"+agpl+"'");
+  if (tekstkleur != "")  Output.document.write(" text='"+tekstkleur+"'");
+  if (koppelkleur != "") { Output.document.write(" link='"+koppelkleur+"'");
+                           Output.document.write(" vlink='"+koppelkleur+"'");
+                           Output.document.write(" alink='"+koppelkleur+"'");
+                         }
+  Output.document.write(">\n");
+  // Output.document.writeln("<!-- toelichting: kleuren uit het standaardpalet worden opgegeven in woorden,");
+  // Output.document.writeln("     andere in hexadecimale getallen, (A=10, F=15, 10=16, A0=160, FF=255)");
+  // Output.document.writeln("     vlink = visited link, alink = active link -->");
+
+  var kop= document.first.kopveld.value;
+  Output.document.write("\n<H1 align='center'>"+kop+"</H1>\n");
+}
+
+function Onderdelen (KOPX, SRCX, ALTX, PARX, URLX, LINX, KopPosX, ImgPosX, ParPosX, LinPosX) {
+  if (ALTX=="") ALTX = SRCX;
+  if (LINX=="") LINX = URLX;
+  if (KOPX != "") Output.document.writeln("<H2"+KopPosX+">"+KOPX+"</H2>");
+  if (SRCX != "") Output.document.write("<P"+ImgPosX+">\n<IMG ")
+  if (SRCX != "") Output.document.write("ALT='"+ALTX+"' SRC='"+SRCX+"'>");
+  if (PARX != "") Output.document.writeln("<P"+ParPosX+">\n"+PARX);
+  if (URLX != "") Output.document.writeln("<P"+LinPosX+">\n<A HREF='"+URLX+"'>"+LINX+"</A>");
+}
+
+function Onderdelen1() {
+  var KopPos1= "";
+  if (document.content.KopPos1[1].checked) KopPos1= " align='center'";
+  if (document.content.KopPos1[2].checked) KopPos1= " align='right'";
+  var ImgPos1= "";
+  if (document.content.ImgPos1[1].checked) ImgPos1= " align='center'";
+  if (document.content.ImgPos1[2].checked) ImgPos1= " align='right'";
+  var ParPos1= "";
+  if (document.content.ParPos1[1].checked) ParPos1= " align='center'";
+  if (document.content.ParPos1[2].checked) ParPos1= " align='right'";
+  var LinPos1= "";
+  if (document.content.LinPos1[1].checked) LinPos1= " align='center'";
+  if (document.content.LinPos1[2].checked) LinPos1= " align='right'";
+  var KOP1= document.content.KOP1.value;
+  var SRC1= document.content.SRC1.value;
+  var ALT1= document.content.ALT1.value;
+  var PAR1= document.content.PAR1.value;
+  var URL1= document.content.URL1.value;
+  var LIN1= document.content.LIN1.value;
+  Onderdelen (KOP1, SRC1, ALT1, PAR1, URL1, LIN1, KopPos1, ImgPos1, ParPos1, LinPos1);
+}
+function Onderdelen2() {
+  var KopPos2= "";
+  if (document.content.KopPos2[1].checked) KopPos2= " align='center'";
+  if (document.content.KopPos2[2].checked) KopPos2= " align='right'";
+  var ImgPos2= "";
+  if (document.content.ImgPos2[1].checked) ImgPos2= " align='center'";
+  if (document.content.ImgPos2[2].checked) ImgPos2= " align='right'";
+  var ParPos2= "";
+  if (document.content.ParPos2[1].checked) ParPos2= " align='center'";
+  if (document.content.ParPos2[2].checked) ParPos2= " align='right'";
+  var LinPos2= "";
+  if (document.content.LinPos2[1].checked) LinPos2= " align='center'";
+  if (document.content.LinPos2[2].checked) LinPos2= " align='right'";
+  var KOP2= document.content.KOP2.value;
+  var SRC2= document.content.SRC2.value;
+  var ALT2= document.content.ALT2.value;
+  var PAR2= document.content.PAR2.value;
+  var URL2= document.content.URL2.value;
+  var LIN2= document.content.LIN2.value;
+  Onderdelen (KOP2, SRC2, ALT2, PAR2, URL2, LIN2, KopPos2, ImgPos2, ParPos2, LinPos2);
+}
+function Onderdelen3() {
+  var KopPos3= "";
+  if (document.content.KopPos3[1].checked) KopPos3= " align='center'";
+  if (document.content.KopPos3[2].checked) KopPos3= " align='right'";
+  var ImgPos3= "";
+  if (document.content.ImgPos3[1].checked) ImgPos3= " align='center'";
+  if (document.content.ImgPos3[2].checked) ImgPos3= " align='right'";
+  var ParPos3= "";
+  if (document.content.ParPos3[1].checked) ParPos3= " align='center'";
+  if (document.content.ParPos3[2].checked) ParPos3= " align='right'";
+  var LinPos3= "";
+  if (document.content.LinPos3[1].checked) LinPos3= " align='center'";
+  if (document.content.LinPos3[2].checked) LinPos3= " align='right'";
+  var KOP3= document.content.KOP3.value;
+  var SRC3= document.content.SRC3.value;
+  var ALT3= document.content.ALT3.value;
+  var PAR3= document.content.PAR3.value;
+  var URL3= document.content.URL3.value;
+  var LIN3= document.content.LIN3.value;
+  Onderdelen (KOP3, SRC3, ALT3, PAR3, URL3, LIN3, KopPos3, ImgPos3, ParPos3, LinPos3);
+}
+function Onderdelen4() {
+  var KopPos4= "";
+  if (document.content.KopPos4[1].checked) KopPos4= " align='center'";
+  if (document.content.KopPos4[2].checked) KopPos4= " align='right'";
+  var ImgPos4= "";
+  if (document.content.ImgPos4[1].checked) ImgPos4= " align='center'";
+  if (document.content.ImgPos4[2].checked) ImgPos4= " align='right'";
+  var ParPos4= "";
+  if (document.content.ParPos4[1].checked) ParPos4= " align='center'";
+  if (document.content.ParPos4[2].checked) ParPos4= " align='right'";
+  var LinPos4= "";
+  if (document.content.LinPos4[1].checked) LinPos4= " align='center'";
+  if (document.content.LinPos4[2].checked) LinPos4= " align='right'";
+  var KOP4= document.content.KOP4.value;
+  var SRC4= document.content.SRC4.value;
+  var ALT4= document.content.ALT4.value;
+  var PAR4= document.content.PAR4.value;
+  var URL4= document.content.URL4.value;
+  var LIN4= document.content.LIN4.value;
+  Onderdelen (KOP4, SRC4, ALT4, PAR4, URL4, LIN4, KopPos4, ImgPos4, ParPos4, LinPos4);
+}
+
+function Eind() {
+  var time = new Date();
+  var Jaar = time.getYear();
+  var Datum = time.getDate()+"-"+(1+time.getMonth())+"-"+(time.getYear());
+  if (Jaar < 100  ) Datum = time.getDate()+"-"+(1+time.getMonth())+"-"+(1970+time.getYear());
+  if (Jaar < 2000 && Jaar > 99) Datum = time.getDate()+"-"+(1+time.getMonth())+"-"+(1900+time.getYear());
+  var naam= document.first.naamveld.value;
+  var auteur= " door "+naam;
+  if (naam== "") auteur= "";
+  Output.document.write("\n<BR><BR><BR><BR><BR>\n<P align='center'><SMALL>\n");
+  Output.document.write("<I>Deze pagina is op "+Datum+" gemaakt met \n");
+  Output.document.write("<A HREF='http://www.woordenboer.nl/scripts/' target='_top'>Spinscript</A>\n");
+  Output.document.write(auteur+"</I></SMALL>\n");
+  Output.document.write("\n</BODY>\n</HTML>\n");
+  Output.document.close();
+}
+
+function Alles() {
+  Begin(); Kleuren(); Onderdelen1(); Onderdelen2(); Onderdelen3(); Onderdelen4(); Eind();
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor="#C0C0C0" text="#000000">
+<H1 align="center">Spinscript</H1>
+<H2 align="center">Maak zelf een webpagina zonder kennis van HTML</H2>
+
+<UL>
+<LI> Met behulp van dit JavaScript kunt u snel een HTML-pagina in elkaar
+zetten, zonder u te verdiepen in opmaakcodes. U hoeft
+alleen maar een paar formulieren in te vullen op deze pagina. En zelfs dat
+is niet per se nodig, want alle invoervelden en -menu's kunnen overgeslagen
+worden. Een druk op onderstaande knop levert meteen al een (bijna lege) pagina op.
+<FORM>
+<INPUT type="button" value="Maak pagina" onClick="Alles();">
+</FORM>
+
+<LI> Om te beginnen kunt u hier uw naam invullen, de titel van de pagina
+en een kopregel. De kopregel komt in grote letters bovenaan de pagina
+te staan, de titel niet op de pagina zelf, maar in een balk van de browser -
+op Windows-PC's gewoonlijk in de donkerblauwe balk helemaal bovenaan -
+en als omschrijving in <I>bookmarks</I> of <I>favorieten</I>.
+
+<FORM name="first">
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Naam:</B>  </TD><TD><INPUT type="text" name="naamveld" size="36"></TD></TR>
+<TR><TD><B>Titel:</B> </TD><TD><INPUT type="text" name="titelveld" size="36"></TD></TR>
+<TR><TD><B>Kop:</B>   </TD><TD><INPUT type="text" name="kopveld" size="36"></TD></TR>
+</TABLE>
+</FORM>
+
+<P>
+<LI>
+<A NAME="kleur"></A>
+Verder kunt u de kleur van de achtergrond en de teksten instellen.
+Er zijn in HTML ruim 16 miljoen kleuren mogelijk (256 * 256 * 256),
+maar de weergave verschilt nogal per monitor, videokaart, besturingssysteem
+en browser.
+<P>
+Hier kan op twee manieren een kleur worden ingesteld: of u kiest uit de 16
+kleuren van een standaardpalet, of u stelt een kleur samen door het gehalte
+aan rood, groen en blauw op te geven. Deze RGB-waarden lopen van 0 tot 255,
+maar om het overzichtelijk te houden kunt u hier kiezen uit een menu van 17
+waarden, wat nog altijd 17 * 17 * 17 = 4913 kleuren mogelijk maakt.
+Hoe hoger de waarde, des te helderder de kleur en des te groter het aandeel
+van de betreffende hoofdkleur.
+Om een paar voorbeelden te noemen: 255-255-255 is wit, 0-0-0 zwart en
+255-255-0 geel; 240-176-16 is oranje, maar 255-160-0 ook.
+<P>
+Voor het standaardpalet zijn al verstekwaarden ingevuld. Als er in de
+menu's voor zowel rood als groen en blauw een getal is gekozen, dan wordt
+daaruit een kleur samengesteld en wordt het standaardpalet dus genegeerd.
+Maar als een van die drie leeg is, dan geldt het standaardpalet weer. Als er
+in alle vier menu's een leeg veld is gekozen, dan wordt er geen kleur ingesteld,
+zodat de instellingen op de computer van de lezer gelden. Om het resultaat te
+zien, kunt u ook hier op de bekende knop drukken.
+
+<FORM name="second">
+<TABLE bgcolor="#E0E0E0" width="75%" cellspacing="10"><TR>
+<TD align="center" width="30%">
+<B>Achtergrondkleur:</B> <BR> <SELECT type="checkbox" name="bgcolor">
+<OPTION value="">
+<OPTION value="black">zwart
+<OPTION value="gray">donkergrijs
+<OPTION selected value="silver">lichtgrijs
+<OPTION value="white">wit
+<OPTION value="yellow">geel
+<OPTION value="lime">lichtgroen
+<OPTION value="olive">olijfgroen
+<OPTION value="green">donkergroen
+<OPTION value="teal">blauwgroen
+<OPTION value="aqua">lichtblauw
+<OPTION value="blue">blauw
+<OPTION value="navy">donkerblauw
+<OPTION value="purple">paars
+<OPTION value="fuchsia">lila
+<OPTION value="red">rood
+<OPTION value="maroon">roodbruin
+</SELECT></TD>
+<TD align="center" width="15%">Rood: <BR>
+<SELECT type="checkbox" name="bgRed">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Groen: <BR>
+<SELECT type="checkbox" name="bgGreen">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Blauw: <BR>
+<SELECT type="checkbox" name="bgBlue">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT>
+</TD></TR></TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" width="75%" cellspacing="10"><TR>
+<TD align="center" width="30%">
+<B>Tekstkleur:</B> <BR> <SELECT type="checkbox" name="textcolor">
+<OPTION value="">
+<OPTION selected value="black">zwart
+<OPTION value="gray">donkergrijs
+<OPTION value="silver">lichtgrijs
+<OPTION value="white">wit
+<OPTION value="yellow">geel
+<OPTION value="lime">lichtgroen
+<OPTION value="olive">olijfgroen
+<OPTION value="green">donkergroen
+<OPTION value="teal">blauwgroen
+<OPTION value="aqua">lichtblauw
+<OPTION value="blue">blauw
+<OPTION value="navy">donkerblauw
+<OPTION value="purple">paars
+<OPTION value="fuchsia">lila
+<OPTION value="red">rood
+<OPTION value="maroon">roodbruin
+</SELECT></TD>
+<TD align="center" width="15%">Rood: <BR>
+<SELECT type="checkbox" name="txRed">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Groen: <BR>
+<SELECT type="checkbox" name="txGreen">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Blauw: <BR>
+<SELECT type="checkbox" name="txBlue">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT>
+</TD></TR></TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" width="75%" cellspacing="10"><TR>
+<TD align="center" width="30%">
+<B>Koppelingen (<I>links</I>):</B> <BR> <SELECT type="checkbox" name="linkcolor">
+<OPTION value="">
+<OPTION value="black">zwart
+<OPTION value="gray">donkergrijs
+<OPTION value="silver">lichtgrijs
+<OPTION value="white">wit
+<OPTION value="yellow">geel
+<OPTION value="lime">lichtgroen
+<OPTION value="olive">olijfgroen
+<OPTION value="green">donkergroen
+<OPTION value="teal">blauwgroen
+<OPTION value="aqua">lichtblauw
+<OPTION selected value="blue">blauw
+<OPTION value="navy">donkerblauw
+<OPTION value="purple">paars
+<OPTION value="fuchsia">lila
+<OPTION value="red">rood
+<OPTION value="maroon">roodbruin
+</SELECT></TD>
+<TD align="center" width="15%">Rood: <BR>
+<SELECT type="checkbox" name="liRed">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Groen: <BR>
+<SELECT type="checkbox" name="liGreen">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT></TD>
+<TD align="center" width="15%">Blauw: <BR>
+<SELECT type="checkbox" name="liBlue">
+<OPTION selected value="">
+<OPTION value="00">  0
+<OPTION value="10"> 16
+<OPTION value="20"> 32
+<OPTION value="30"> 48
+<OPTION value="40"> 64
+<OPTION value="50"> 80
+<OPTION value="60"> 96
+<OPTION value="70">112
+<OPTION value="80">128
+<OPTION value="90">144
+<OPTION value="A0">160
+<OPTION value="B0">176
+<OPTION value="C0">192
+<OPTION value="D0">208
+<OPTION value="E0">224
+<OPTION value="F0">240
+<OPTION value="FF">255
+</SELECT>
+</TD></TR></TABLE>
+
+<P>
+<INPUT type="button" value="Maak pagina" onClick="Alles();">
+
+<P>
+Eventueel kan er ook een plaatje als achtergrond gebruikt worden.
+De achtergrondkleur verdwijnt daaronder, maar wordt niet overbodig, want
+het is heel goed mogelijk dat iemand wel de pagina heeft, maar niet het
+plaatje. We gaan er voorlopig van uit dat het plaatje in
+dezelfde map staat als de HTML-pagina. Dan hoeft u hier alleen de
+bestandsnaam in te vullen. Andere manieren om naar een bestand te verwijzen
+worden hieronder toegelicht.
+Op het World Wide Web zijn de gecomprimeerde
+formaten GIF (extensie *.gif) en JPEG (*.jpg, *.jpeg, *.jpe)
+gangbaar.
+
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TD><B>Achtergrondplaatje:</B> </TD><TD><INPUT type="text" name="back" size="36"></TD>
+</TABLE>
+</FORM>
+
+<P>
+<LI><A NAME="inhoud"></A>
+Misschien wilt u ook 'inhoud' op de pagina hebben. Op dat gebied zijn de
+mogelijkheden hier vrij beperkt. Er kunnen vier alinea's ingevuld worden die
+bestaan uit achtereenvolgens een koptekst, een afbeelding, een stuk tekst en
+een koppeling <I>(hyperlink)</I>. Maar natuurlijk kunt u ook andere
+combinaties van onderdelen maken door velden leeg te laten.
+Tussen alle onderdelen wordt automatisch een witregel ingevoegd en bij elk
+onderdeel kunt u de positie opgeven, d.w.z. of het links, centraal of
+rechts uitgelijnd moet worden.
+
+<P>
+Om een plaatje of een koppeling op te geven moet een URL ingevoerd worden, een
+adres dat kan bestaan uit:
+<UL type="circle">
+  <LI>Alleen de naam van een bestand, als het in dezelfde directory staat als de HTML-pagina.
+  <LI>Een relatief pad, bv. <CODE>plaatjes/foto.jpg</CODE>, wat verwijst naar een bestand in de subdirectory <CODE>plaatjes</CODE>.
+  <LI>Een volledig pad op een eigen schijf, bv. <CODE>file://C:/Myfiles/Website/</CODE>, wat verwijst naar een directory.
+  <LI>Een adres op Internet, bv. <CODE>http://home.planet.nl/~lezer/spin/index.htm</CODE>
+</UL>
+N.B. In alle gevallen worden steeds <I>slashes</I> (//) gebruikt,
+niet <I>backslashes</I> (\\) zoals in DOS en Windows.
+
+<P>
+Met een paar simpele HTML-codes kunt u de teksten verlevendigen. Een stuk
+tekst wordt cursief weergegeven als u &lt;I&gt; ervoor zet en &lt;/I&gt; erachter. Voor
+vetgedrukte tekst zijn er de codes &lt;B&gt; en &lt;/B&gt;. Wilt u beide codes combineren,
+doe het dan niet zo: <CODE>&lt;B&gt;&lt;I&gt;woord&lt;/B&gt;&lt;/I&gt;</CODE>, maar zo:
+<CODE>&lt;B&gt;&lt;I&gt;woord&lt;/I&gt;&lt;/B&gt;</CODE>
+
+<P>
+<BR><BR>
+<FORM name="content">
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Alineakop:</B> </TD><TD><INPUT type="text" name="KOP1"></TD>
+<TD>Positie: </TD><TD> <INPUT name="KopPos1" type="radio" value="L" CHECKED>Links
+  <INPUT name="KopPos1" type="radio" value="M">Midden
+  <INPUT name="KopPos1" type="radio" value="R">Rechts
+</TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Afbeelding</B>  </TD>
+  <TD> <INPUT name="ImgPos1" type="radio" value="L" CHECKED>Links
+  <INPUT name="ImgPos1" type="radio" value="M">Midden
+  <INPUT name="ImgPos1" type="radio" value="R">Rechts
+</TD></TR>
+<TR><TD>Bestandsnaam:  </TD><TD><INPUT type="text" name="SRC1" size="36"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="ALT1" size="36"></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Tekst:</B></TD><TD>
+  <INPUT name="ParPos1" type="radio" value="L" CHECKED>Links
+  <INPUT name="ParPos1" type="radio" value="M">Midden
+  <INPUT name="ParPos1" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>   </TD><TD>
+<TEXTAREA name="PAR1" cols="60" rows="5"></TEXTAREA>
+</TD></TR></TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Koppeling:</B>
+<TD>
+  <INPUT name="LinPos1" type="radio" value="L" CHECKED>Links
+  <INPUT name="LinPos1" type="radio" value="M">Midden
+  <INPUT name="LinPos1" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>URL (Internetadres):  </TD><TD><INPUT type="text" name="URL1" size="45"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="LIN1" size="45"></TD></TR>
+</TABLE>
+
+<P>
+<BR><BR>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Alineakop:</B> </TD><TD><INPUT type="text" name="KOP2"></TD>
+<TD>Positie: </TD><TD> <INPUT name="KopPos2" type="radio" value="L" CHECKED>Links
+  <INPUT name="KopPos2" type="radio" value="M">Midden
+  <INPUT name="KopPos2" type="radio" value="R">Rechts
+</TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Afbeelding</B>  </TD>
+  <TD> <INPUT name="ImgPos2" type="radio" value="L" CHECKED>Links
+  <INPUT name="ImgPos2" type="radio" value="M">Midden
+  <INPUT name="ImgPos2" type="radio" value="R">Rechts
+</TD></TR>
+<TR><TD>Bestandsnaam:  </TD><TD><INPUT type="text" name="SRC2" size="36"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="ALT2" size="36"></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Tekst:</B></TD><TD>
+  <INPUT name="ParPos2" type="radio" value="L" CHECKED>Links
+  <INPUT name="ParPos2" type="radio" value="M">Midden
+  <INPUT name="ParPos2" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>   </TD><TD>
+<TEXTAREA name="PAR2" cols="60" rows="5"></TEXTAREA></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Koppeling</B>
+<TD>
+  <INPUT name="LinPos2" type="radio" value="L" CHECKED>Links
+  <INPUT name="LinPos2" type="radio" value="M">Midden
+  <INPUT name="LinPos2" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>URL (Internetadres):  </TD><TD><INPUT type="text" name="URL2" size="45"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="LIN2" size="45"></TD></TR>
+</TABLE>
+
+<P>
+<BR><BR>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Alineakop:</B> </TD><TD><INPUT type="text" name="KOP3"></TD>
+<TD>Positie: </TD><TD> <INPUT name="KopPos3" type="radio" value="L" CHECKED>Links
+  <INPUT name="KopPos3" type="radio" value="M">Midden
+  <INPUT name="KopPos3" type="radio" value="R">Rechts
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Afbeelding</B>  </TD>
+  <TD> <INPUT name="ImgPos3" type="radio" value="L" CHECKED>Links
+  <INPUT name="ImgPos3" type="radio" value="M">Midden
+  <INPUT name="ImgPos3" type="radio" value="R">Rechts
+</TD></TR>
+<TR><TD>Bestandsnaam:  </TD><TD><INPUT type="text" name="SRC3" size="36"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="ALT3" size="36"></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Tekst:</B></TD><TD>
+  <INPUT name="ParPos3" type="radio" value="L" CHECKED>Links
+  <INPUT name="ParPos3" type="radio" value="M">Midden
+  <INPUT name="ParPos3" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>   </TD><TD>
+<TEXTAREA name="PAR3" cols="60" rows="5"></TEXTAREA></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Koppeling</B>
+<TD>
+  <INPUT name="LinPos3" type="radio" value="L" CHECKED>Links
+  <INPUT name="LinPos3" type="radio" value="M">Midden
+  <INPUT name="LinPos3" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>URL (Internetadres):  </TD><TD><INPUT type="text" name="URL3" size="45" ></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="LIN3" size="45"></TD></TR>
+</TABLE>
+
+<P>
+<BR><BR>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Alineakop:</B> </TD><TD><INPUT type="text" name="KOP4"></TD></TR>
+<TD>Positie: </TD><TD> <INPUT name="KopPos4" type="radio" value="L" CHECKED>Links
+  <INPUT name="KopPos4" type="radio" value="M">Midden
+  <INPUT name="KopPos4" type="radio" value="R">Rechts
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Afbeelding</B>  </TD>
+  <TD> <INPUT name="ImgPos4" type="radio" value="L" CHECKED>Links
+  <INPUT name="ImgPos4" type="radio" value="M">Midden
+  <INPUT name="ImgPos4" type="radio" value="R">Rechts
+</TD></TR>
+<TR><TD>Bestandsnaam:  </TD><TD><INPUT type="text" name="SRC4" size="36"></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="ALT4" size="36"></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Tekst:</B></TD><TD>
+  <INPUT name="ParPos4" type="radio" value="L" CHECKED>Links
+  <INPUT name="ParPos4" type="radio" value="M">Midden
+  <INPUT name="ParPos4" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>   </TD><TD>
+<TEXTAREA name="PAR4" cols="60" rows="5"></TEXTAREA></TD></TR>
+</TABLE>
+<P>
+<TABLE bgcolor="#E0E0E0" cellspacing="10">
+<TR><TD><B>Koppeling</B>
+<TD>
+  <INPUT name="LinPos4" type="radio" value="L" CHECKED>Links
+  <INPUT name="LinPos4" type="radio" value="M">Midden
+  <INPUT name="LinPos4" type="radio" value="R">Rechts</TD></TR>
+<TR><TD>URL (Internetadres):  </TD><TD><INPUT type="text" name="URL4" size="45" ></TD></TR>
+<TR><TD>Omschrijving: </TD><TD><INPUT type="text" name="LIN4" size="45"></TD></TR>
+</TABLE>
+</FORM>
+
+<LI>
+Klaar met invullen? Dan kunt u met een druk op de knop de complete pagina
+tevoorschijn toveren. Vergeet niet om de pagina op te slaan als u tevreden bent.
+Daarnaast is het leerzaam om te kijken wat voor
+codes u eigenlijk heeft laten schrijven. Klik daarvoor in de browser op
+<TT>Beeld|Bron</TT> of <TT>View|Document Source</TT>, of iets dergelijks.
+Hopelijk denkt u dan "Is dat alles? Dat kan ik zelf ook wel."
+<P>(In sommige browsers werkt het opslaan nog niet goed, dan moet u eerst de
+broncode openen en die opslaan.)
+
+<P>
+<FORM>
+<INPUT type="button" value="Maak pagina" onClick="Alles();">
+</FORM>
+</UL>
+</BODY>
+</HTML>
