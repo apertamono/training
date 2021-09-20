@@ -1,5 +1,7 @@
-Personal practice programs, mainly for C++ and Python.  
-Some of these programs may be derived from obsolete sources. 
+Personal practice programs and scripts in several programming languages.
+Warning: some code may be based on obsolete sources.
 
-Editor: Notepad++.  
-Compiler: gcc.  
+Editor: Notepad++.
+Compiler: gcc.
+
+From the C++ folder: listen to the [output of FizzBuzz](https://soundcloud.com/edwin-den-boer/fizzbuzz) on my Soundcloud.
