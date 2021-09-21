@@ -11,7 +11,7 @@ from os import listdir
 from os.path import isfile, join
 
 # Unusual variable names (directoire, onlyfiles, rits) were chosen to avoid using reserved names.
-# Not using runtime input, to avoid accidentally deleting archives that need to be saved.
+# Not using runtime input, to avoid accidentally deleting archives that need to be saved. I miss Perl.
 # Concatenating path and filename with `join(directoire, o)` is necessary in order to edit a folder other than the one this script is saved in.
 
 directoire = "C:/Users/Edwin/Test"
