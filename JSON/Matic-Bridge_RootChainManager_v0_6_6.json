@@ -34,7 +34,10 @@
 				},
 				"tokenName": {
 					"key": "contractSymbol",
-					"filters": {},
+                    "filters": {
+                        "eventName": "Transfer",
+                        "from": "{userAddress}"
+                    },
 					"defaultValue": "an unknown token"
 				}
 			}
