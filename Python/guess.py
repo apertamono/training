@@ -1,4 +1,5 @@
-# Guess the number game, but more fun than the version in the course
+# Guess the number game
+# Inspired by Automate the Boring Stuff, but more fun than the version in the course
 
 ## TODO: replace 2% of responses by a random quote about failure, knowledge, uncertainty or numbers:
 ## No, it's better to post a quote at the end, as a reward for guessing the number.
@@ -54,19 +55,36 @@
 # Talent hits a target no one else can hit. Genius hits a target no one else can see. - Arthur Schopenhauer.
 
 
-
-import random # Errors on the command-line because keyword.py in the same folder was using the name of a module called by random
+import random 
 
 secretNumber = random.randint(1, 23) # This goes from 1 to 23
 hinted = False
 previous = 0
+guess = 0 
+replymode = 0
 print("I\'m thinking of a number between 1 and 23.")
 print("Can you guess my number?")
-guess = int(input()) # TODO: exception for non-numerical strings ## TODO: conversion function
+
+# TODO: Turn guess input into a function + run the function once before the big loop
+strinput = input()
+# Convert numbers entered as words
+num_en = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three"]
+if len(strinput) > 2: # Quickly filter out regular digits to avoid going through this loop every time
+	for i in range(1, 24):
+		if strinput == num_en[i].lower():
+			strinput = str(i)
+			break
+# Exception for non-numerical strings
+try:
+	guess = int(strinput)
+except:
+	print("You did not enter a number. Try again!")
+	# Ideally, the big loop should be skipped, for efficiency and to avoid the number out of bounds error
+	replymode = 5
 
 # Ask the player to guess 1+6=7 times
-for guessesTaken in range (1, 8): # This goes from 1 to 7, while the last round won't be completed
-	toggle = random.randint(1, 3) # Three different response types
+for guessesTaken in range(1, 8): # This goes from 1 to 7, while the last round won't be completed and one guess was made before the loop
+	replymode = random.randint(1, 3) # Three different response types, skipped when > 3
 	if guess == secretNumber:
 		if guessesTaken == 1:
 			print("What is this magic? You only needed 1 guess!")
@@ -82,35 +100,35 @@ for guessesTaken in range (1, 8): # This goes from 1 to 7, while the last round 
 		break		
 	elif guess == 42 or guess == 69 or guess == 420 or guess == 666:
 		print("This is a mathematical excercise. Please take this seriously.")
-		toggle = 4 # Skip the other responses ## Could use `continue` if input wasn't at the end of the loop
+		replymode = 4 # Skip the other responses ## Could use `continue` if input wasn't at the end of the loop
 	elif guess < 1 or guess > 23:
 		print("I said a number between 1 and 23.")
-		toggle = 4 
+		replymode = 4 
 	elif guess == previous: # TODO: use a list to keep track of all numbers guessed
 		print("You already guessed that, idiot!")
-		toggle = 4
+		replymode = 4
 	elif guess == 4 or guess == 13:
 		print("You guessed an unlucky number. And it\'s wrong too. Try again.")
-		toggle = 4
-	elif toggle == 1 or (toggle == 3 and hinted == True):
+		replymode = 4
+	elif replymode == 1 or (replymode == 3 and hinted == True):
 		if guess < secretNumber:
 			print("Guess higher.")
-		else:
+		elif guess > secretNumber:
 			print("Guess lower.")
-	elif toggle == 2:
+	elif replymode == 2:
 		if abs(guess - secretNumber) < 5:
 			print("You\'re close.")
 		elif abs(guess - secretNumber) < 10:
 			print("You\'re not close.")
 		else:
 			print("You\'re far off!")
-	elif toggle == 3 and hinted == False: # Only hint odd/even once
+	elif replymode == 3 and hinted == False: # Only hint odd/even once
 		hinted = True
 		if secretNumber % 2 == 0:
 			print("Hint: it\'s an even number.")
 		else:
 			print("Hint: it\'s an odd number.")
-	previous = guess		
+	previous = guess # TODO: use a list to keep track of all numbers guessed
 	guess = int(input()) # At the end because you don't want a hint without input
 
 
